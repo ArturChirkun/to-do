@@ -1,0 +1,23 @@
+
+
+.date {
+    font-size: 32px;
+    font-weight: 700;
+    text-align: left;
+    margin-bottom: 8px;
+}
+
+.number-of-tasks {
+    text-align: left;
+    color: #575767;
+    font-weight: 600;
+    font-size: 14px;
+    padding-bottom: 16px;
+}
+
+.horizontal-line {
+    opacity: 0.2;
+    border-radius: 100px;
+    background: #575767;
+    margin: 0;
+}
