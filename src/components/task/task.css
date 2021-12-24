@@ -1,7 +1,6 @@
 .task {
     width: 100%;
     display: flex;
-
 }
 .checkbox {
     width: 100%;
@@ -14,14 +13,13 @@
     font-weight: 600;
     font-size: 14px;
     line-height: 17px;
-    color: #575767;
+    color: var(--secondary-text);
 }
 
 .delete-button {
     cursor: pointer;
     margin: auto 0 auto auto;
 }
-
 
 .checkbox input {
     opacity: 0;
@@ -37,30 +35,30 @@
     line-height: 24px;
     vertical-align: middle;
     width: 100%;
+    color: var(--text-primary);
 }
 
 .checkbox label::before {
-        content: " ";
-        color: #000;
-        display: inline-block;
-        width: 24px;
-        height: 24px;
-        text-align: center;
-        background: #2B2D37;
-        border: 2px solid #0E0E11;
-        border-radius: 6px;
-        vertical-align: middle;
-        cursor: pointer;
+    content: " ";
+    color: #000;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    background: var(--check-box-color);
+    border: 2px solid var(--check-box-border);
+    border-radius: 6px;
+    vertical-align: middle;
+    cursor: pointer;
 }
 
 .checkbox input:checked + label::before {
     content: "\2713";
-    color:#DADADA ;
-    
-  }
+    color: #dadada;
+}
 
 .checkbox input:checked + label {
     content: "\2713";
-    color:#575767;
-    cursor:default;
-  }
+    color: #575767;
+    cursor: default;
+}

@@ -1,17 +1,16 @@
 .add-task {
-    margin: auto;
-
+  margin: auto;
 }
 
 .new-task {
-    margin: 16px 0;
+  margin: 16px 0;
 }
 
 .category {
-    margin-right: 5px;
-    margin-left: 10px;
+  margin-right: 5px;
+  margin-left: 10px;
 }
 
 .button-group {
-    display: flex;
+  display: flex;
 }
