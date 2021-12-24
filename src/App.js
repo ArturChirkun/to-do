@@ -7,8 +7,23 @@ import Header from "./components/header/header";
 import ViewTasks from "./components/view-tasks/view-tasks";
 import AddTask from "./components/add-task/add-task";
 import CustomButton from "./components/custom-buttom/custom-button";
+import ThemeButton from "./components/theme-button/theme-button";
+import useLocalStorage from "use-local-storage";
 
 const App = () => {
+  const defaultDark = window.matchMedia(
+    "(prefers-color-scheme: light)"
+  ).matches;
+  const [theme, setTheme] = useLocalStorage(
+    "theme",
+    defaultDark ? "light" : "dark"
+  );
+
+  const switchTheme = () => {
+    const newTheme = theme === "dark" ? "light" : "dark";
+    setTheme(newTheme);
+  };
+
   const storage = window.localStorage;
   const INITAIL_STATE = JSON.parse(storage.getItem("tasks"));
   const [tasks, setCompleteTasks] = useState(INITAIL_STATE);
@@ -22,12 +37,17 @@ const App = () => {
   };
 
   const addNewTask = (name, category) => {
-    const a = tasks.filter(
+
+    if (name === '') {
+      alert('Please, enter a task')
+      return
+    }
+    const checkOnMatching = tasks.filter(
       (task) =>
         task?.name?.toLowerCase() === name.toLowerCase() &&
         task.category === category
     ).length;
-    if (a === 0) {
+    if (checkOnMatching === 0) {
       setCompleteTasks([
         ...tasks,
         {
@@ -55,7 +75,7 @@ const App = () => {
   };
 
   return (
-    <div className="App">
+    <div className="App" data-theme={theme}>
       <Header tasks={tasks} />
       <ViewTasks
         tasks={tasks}
@@ -72,6 +92,11 @@ const App = () => {
       {visibality ? <AddTask addNewTask={addNewTask} /> : null}
 
       <ViewTasks tasks={tasks} deleteTask={deleteTask} completed={true} />
+
+      <ThemeButton onClick={switchTheme}>
+        {" "}
+        Switch to {theme === "dark" ? "Light" : "Dark"}{" "}
+      </ThemeButton>
     </div>
   );
 };

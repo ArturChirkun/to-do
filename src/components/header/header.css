@@ -1,10 +1,9 @@
-
-
 .date {
     font-size: 32px;
     font-weight: 700;
     text-align: left;
     margin-bottom: 8px;
+    color: var(--header-text);
 }
 
 .number-of-tasks {

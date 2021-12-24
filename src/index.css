@@ -1,14 +1,23 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background: #141419 ;
-}
+
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+:root {
+  --background: #141419;
+  --text-primary: #DADADA;
+  --secondary-text: #575767;
+  --header-text:#DADADA;
+  --check-box-color:linear-gradient(180deg, #2B2D37 0%, #262933 100%);
+  --check-box-border: #0E0E11
+}
+
+[data-theme='light'] {
+  --background: #F8F8F8;
+  --text-primary: #575767;
+  --secondary-text: #B9B9BE;
+  --header-text:#0E0E11;
+  --check-box-color:linear-gradient(180deg, #FCFCFC 0%, #F8F8F8 100%);
+  --check-box-border: #DADADA
 }

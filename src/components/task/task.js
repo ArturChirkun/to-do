@@ -19,7 +19,7 @@ const Task = ({ name, category, checked, deleteTask, id, addToCompleted }) => {
           />
           <label htmlFor={id}> {name}</label>
         </div>
-         <span className="category"> {category} </span> 
+        <span className="category"> {category} </span>
       </div>
 
       <span className="delete-button" onClick={() => deleteTask(id)}>
