@@ -37,10 +37,9 @@ const App = () => {
   };
 
   const addNewTask = (name, category) => {
-
-    if (name === '') {
-      alert('Please, enter a task')
-      return
+    if (name === "") {
+      alert("Please, enter a task");
+      return;
     }
     const checkOnMatching = tasks.filter(
       (task) =>
