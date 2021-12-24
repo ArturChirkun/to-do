@@ -1,19 +1,25 @@
 .task {
     width: 100%;
     display: flex;
+    margin-bottom: 16px;
 }
 .checkbox {
     width: 100%;
     display: flex;
 }
 
-.category {
-    margin: -8px 0 16px 0;
+.container-checkbox{
+    display: flex;
+    flex-direction: column;
+}
+.category-checkbox {
+    display: block;
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
     line-height: 17px;
     color: var(--secondary-text);
+    margin: -5px auto 0 43px;
 }
 
 .delete-button {
@@ -34,8 +40,8 @@
     font-weight: normal;
     line-height: 24px;
     vertical-align: middle;
-    width: 100%;
     color: var(--text-primary);
+    
 }
 
 .checkbox label::before {
@@ -50,6 +56,7 @@
     border-radius: 6px;
     vertical-align: middle;
     cursor: pointer;
+    margin-right: 10px;
 }
 
 .checkbox input:checked + label::before {

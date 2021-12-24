@@ -1,7 +1,11 @@
-body {
+* {
   margin: 0;
+  padding: 0;
+}
 
-  background-color: var(--background);
+.body {
+  background: var(--background);
+  min-height: 100vh;
 }
 
 .App {

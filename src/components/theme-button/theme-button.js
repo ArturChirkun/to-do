@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { ThemeContext } from "../themes/themes";
+import React from "react";
+
 
 import "./theme-button.css";
 

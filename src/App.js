@@ -37,10 +37,9 @@ const App = () => {
   };
 
   const addNewTask = (name, category) => {
-
-    if (name === '') {
-      alert('Please, enter a task')
-      return
+    if (name === "") {
+      alert("Please, enter a task");
+      return;
     }
     const checkOnMatching = tasks.filter(
       (task) =>
@@ -75,28 +74,30 @@ const App = () => {
   };
 
   return (
-    <div className="App" data-theme={theme}>
-      <Header tasks={tasks} />
-      <ViewTasks
-        tasks={tasks}
-        deleteTask={deleteTask}
-        addToCompleted={addToCompleted}
-        completed={false}
-      />
+    <div className="body" data-theme={theme}>
+      <div className="App" >
+        <Header tasks={tasks} />
+        <ViewTasks
+          tasks={tasks}
+          deleteTask={deleteTask}
+          addToCompleted={addToCompleted}
+          completed={false}
+        />
 
-      <CustomButton type="button" onClick={handleVisabilityClick}>
-        {" "}
-        {visibality ? "Close" : "Add new task"}{" "}
-      </CustomButton>
+        <CustomButton type="button" onClick={handleVisabilityClick}>
+          {" "}
+          {visibality ? "Close" : "Add new task"}{" "}
+        </CustomButton>
 
-      {visibality ? <AddTask addNewTask={addNewTask} /> : null}
+        {visibality ? <AddTask addNewTask={addNewTask} /> : null}
 
-      <ViewTasks tasks={tasks} deleteTask={deleteTask} completed={true} />
+        <ViewTasks tasks={tasks} deleteTask={deleteTask} completed={true} />
 
-      <ThemeButton onClick={switchTheme}>
-        {" "}
-        Switch to {theme === "dark" ? "Light" : "Dark"}{" "}
-      </ThemeButton>
+        <ThemeButton onClick={switchTheme}>
+          {" "}
+          Switch to {theme === "dark" ? "Light" : "Dark"}{" "}
+        </ThemeButton>
+      </div>
     </div>
   );
 };
