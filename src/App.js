@@ -24,16 +24,16 @@ const App = () => {
     setTheme(newTheme);
   };
 
-  const storage = window.localStorage;
-  const INITAIL_STATE = JSON.parse(storage.getItem("tasks"));
-  const [tasks, setCompleteTasks] = useState(INITAIL_STATE);
+  const storage = window.localStorage; // ????
+  const INITAIL_STATE = JSON.parse(storage.getItem("tasks"));//typo
+  const [tasks, setCompleteTasks] = useState(INITAIL_STATE);// tasks and complete tasks its not same
 
-  storage.setItem("tasks", JSON.stringify(tasks));
+  storage.setItem("tasks", JSON.stringify(tasks)); /// ????
 
-  const [visibality, setVisability] = useState(false);
+  const [visibality, setVisability] = useState(false);//typo
 
-  const handleVisabilityClick = () => {
-    setVisability(!visibality);
+  const handleVisabilityClick = () => { // typo
+    setVisability(!visibality); //  better use prev
   };
 
   const addNewTask = (name, category) => {
@@ -45,7 +45,7 @@ const App = () => {
       (task) =>
         task?.name?.toLowerCase() === name.toLowerCase() &&
         task.category === category
-    ).length;
+    ).length; // better to use find
     if (checkOnMatching === 0) {
       setCompleteTasks([
         ...tasks,
@@ -56,7 +56,7 @@ const App = () => {
           completed: false,
         },
       ]);
-    } else {
+    } else { // use return instead else
       alert("this tasks has been already exist");
     }
   };
@@ -69,7 +69,7 @@ const App = () => {
 
   const addToCompleted = (id) => {
     const completedTask = tasks.find((task) => task.id === id);
-    completedTask.completed = true;
+    completedTask.completed = true; // ????
     setCompleteTasks([...tasks]);
   };
 
