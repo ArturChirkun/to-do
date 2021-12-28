@@ -21,9 +21,9 @@ const AddTask = ({ addNewTask }) => {
         <div className="add-task">
 
             <input type='text' placeholder="enter your task" value={inputTask} onChange={handleInputChange} className="new-task"/>
-
-             <div className="list-categories">
-
+{/* map */}
+             <div className="list-categories"> 
+{/* component */}
                 <input type="radio" id="finance"
                 name="category" value="finance" className="category" onChange={handleRadioFocus}/>
                 <label htmlFor="finance">Finance</label>
@@ -45,6 +45,7 @@ const AddTask = ({ addNewTask }) => {
                 <label htmlFor="work">Work</label>
 
             </div>
+            {/* no anonymous function */}
                 <CustomButton onClick={() => addNewTask(inputTask, taskCategory)}> Add </CustomButton>
 
         </div>

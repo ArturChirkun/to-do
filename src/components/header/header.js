@@ -10,6 +10,8 @@ const Header = ({ tasks }) => {
   const incompleteTasksCount = tasks.filter(
     (task) => task.completed === false
   ).length;
+
+  // move to utils
   const date = new Date();
   const currentYear = date.getFullYear();
   const currentDay = date.getDate();

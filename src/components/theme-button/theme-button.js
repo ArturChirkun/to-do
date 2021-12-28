@@ -4,7 +4,8 @@ import React from "react";
 import "./theme-button.css";
 
 const ThemeButton = ({ onClick, ...props}) => {
-
+//no anon func
+// change props.children to children
 
   return (
     <div className="container">

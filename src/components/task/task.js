@@ -4,7 +4,8 @@ import "./task.css";
 
 const Task = ({ name, category, checked, deleteTask, id, addToCompleted }) => {
   const nameToLowerCase = name.toLowerCase();
-
+//no anon func 
+// change span delete-button to button
   return (
     <div className="task">
       <div className="container-checkbox">
