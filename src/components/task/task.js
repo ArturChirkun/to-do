@@ -16,17 +16,17 @@ const Task = ({ name, category, checked, deleteTask, id, addToCompleted }) => {
             name={nameToLowerCase}
             checked={checked}
             readOnly
-            onChange={checked ? null : () => addToCompleted(id)}
+            onChange={checked ? null : addToCompleted.bind(this, id)}
           />
           <label htmlFor={id}> {name}</label>
         </div>
         <span className="category-checkbox"> {category} </span>
       </div>
 
-      <span className="delete-button" onClick={() => deleteTask(id)}>
+      <button className="delete-button" onClick={deleteTask.bind(this, id)}>
         {" "}
         x{" "}
-      </span>
+      </button>
     </div>
   );
 };

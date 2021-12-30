@@ -2,10 +2,15 @@ import React from "react";
 
 import "./custom-button.css";
 
-const CustomButton = (props) => {
+const CustomButton = ({ children, onClick }) => {
   // change props to { ...props}
 
-  return <button onClick={props.onClick}>{props.children}</button>;
+  return (
+    <button className="custom-button" onClick={onClick}>
+      {" "}
+      {children}{" "}
+    </button>
+  );
 };
 
 export default CustomButton;

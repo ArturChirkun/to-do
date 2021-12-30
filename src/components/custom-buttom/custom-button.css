@@ -1,4 +1,4 @@
-button {
+.custom-button{
     margin: auto;
     appearance: none;
     border: 0;
@@ -9,11 +9,11 @@ button {
     font-size: 16px;
 }
 
-button:hover {
+.custom-button:hover {
     background: #1d49aa;
     cursor: pointer;
 }
 
-button:active {
+.custom-button:active {
     transform: translateY(2px);
 }
