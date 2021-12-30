@@ -1,7 +1,8 @@
-import moment from "moment";
 import React from "react";
 
 import "./header.css";
+
+import { currentDate } from "../../utils/utils";
 
 const Header = ({ tasks }) => {
   const completedTasksCount = tasks.filter(
@@ -12,11 +13,7 @@ const Header = ({ tasks }) => {
   ).length;
 
   // move to utils
-  const date = new Date();
-  const currentYear = date.getFullYear();
-  const currentDay = date.getDate();
-  const currentMonth = moment().format("MMMM");
-  const currentDate = `${currentMonth} ${currentDay}, ${currentYear}`;
+
 
   return (
     <div className="header">

@@ -3,7 +3,7 @@ import React from "react";
 
 import "./theme-button.css";
 
-const ThemeButton = ({ onClick, ...props}) => {
+const ThemeButton = ({ onClick, children}) => {
 //no anon func
 // change props.children to children
 
@@ -14,10 +14,10 @@ const ThemeButton = ({ onClick, ...props}) => {
         name="toggle"
         id="toggle-button"
         className="toggle-button"
-        onClick={() => onClick()}
+        onClick={onClick}
       />
       <label forhtml="toggle-button" className="text">
-        {props.children}
+        {children}
       </label>
     </div>
   );

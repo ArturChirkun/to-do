@@ -25,6 +25,10 @@
 .delete-button {
     cursor: pointer;
     margin: auto 0 auto auto;
+    padding: 4px;
+    border-radius: 6px;
+    background-color: var(--background);
+    color: white;
 }
 
 .checkbox input {
