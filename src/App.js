@@ -32,9 +32,17 @@ const App = () => {
   const [visibility, setVisibility] = useState(false); //typo -fix
 
   const handleVisibilityClick = (prev) => {
-    // typo -fix
-    setVisibility(!prev); //  better use prev --fix
+    return () => {
+      setVisibility(!prev);
+    }
+ //  better use prev --fix
   };
+
+  const handleThemeSwitch = (theme) => {
+    return () => {
+      setTheme(theme)
+    }
+  }
 
   const addNewTask = (name, category) => {
     if (name === "") {
@@ -87,7 +95,7 @@ const App = () => {
 
         <CustomButton
           type="button"
-          onClick={handleVisibilityClick.bind(this, visibility)}
+          onClick={handleVisibilityClick(visibility)}
         >
           {" "}
           {visibility ? "Close" : "Add new task"}{" "}
@@ -97,7 +105,7 @@ const App = () => {
 
         <ViewTasks tasks={tasks} deleteTask={deleteTask} completed={true} />
 
-        <ThemeButton onClick={() => setTheme(switchTheme)}>
+        <ThemeButton onClick={handleThemeSwitch(switchTheme)}>
           {" "}
           Switch to {theme === "dark" ? "Light" : "Dark"}{" "}
         </ThemeButton>

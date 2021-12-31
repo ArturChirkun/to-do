@@ -17,6 +17,12 @@ const AddTask = ({ addNewTask }) => {
     setTaskCategory(e.target.value);
   };
 
+  const handleAddNewTask = (inputTask, taskCategory) => {
+    return () => {
+      addNewTask(inputTask, taskCategory)
+    }
+  }
+
   const arrOfCategory = ["Finance", "School", "Home", "Work", "Sport"];
   return (
     <div className="add-task">
@@ -39,7 +45,7 @@ const AddTask = ({ addNewTask }) => {
         ))}
       </div>
       {/* no anonymous function */}
-      <CustomButton onClick={addNewTask.bind(this, inputTask, taskCategory)}>
+      <CustomButton onClick={handleAddNewTask(inputTask, taskCategory)}>
         {" "}
         Add{" "}
       </CustomButton>
