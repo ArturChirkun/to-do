@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./App.css";
 
 import { v4 as uuidv } from "uuid";
@@ -9,19 +9,14 @@ import AddTask from "./components/add-task/add-task";
 import CustomButton from "./components/custom-buttom/custom-button";
 import ThemeButton from "./components/theme-button/theme-button";
 import {
-  switchTheme,
-  preTheme,
   getTasksFromLocalStorage,
   setTasksInLocalStorage,
 } from "./components/services/local-storage";
+import { ThemeContext } from "./components/context/context";
 
 const App = () => {
-  const [theme, setTheme] = useState();
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
-  useEffect(() => {
-    setTheme(preTheme());
-  }, []);
-  //const INITIAL_STATE = getTasksFromLocalStorage();
   const [tasks, setTasks] = useState(getTasksFromLocalStorage()); // tasks and complete tasks its not same --fix
 
   useEffect(() => {
@@ -34,15 +29,15 @@ const App = () => {
   const handleVisibilityClick = (prev) => {
     return () => {
       setVisibility(!prev);
-    }
- //  better use prev --fix
+    };
+    //  better use prev --fix
   };
 
-  const handleThemeSwitch = (theme) => {
+  const handleThemeSwitch = () => {
     return () => {
-      setTheme(theme)
-    }
-  }
+      toggleTheme();
+    };
+  };
 
   const addNewTask = (name, category) => {
     if (name === "") {
@@ -93,10 +88,7 @@ const App = () => {
           completed={false}
         />
 
-        <CustomButton
-          type="button"
-          onClick={handleVisibilityClick(visibility)}
-        >
+        <CustomButton type="button" onClick={handleVisibilityClick(visibility)}>
           {" "}
           {visibility ? "Close" : "Add new task"}{" "}
         </CustomButton>
@@ -105,7 +97,7 @@ const App = () => {
 
         <ViewTasks tasks={tasks} deleteTask={deleteTask} completed={true} />
 
-        <ThemeButton onClick={handleThemeSwitch(switchTheme)}>
+        <ThemeButton onClick={handleThemeSwitch()}>
           {" "}
           Switch to {theme === "dark" ? "Light" : "Dark"}{" "}
         </ThemeButton>
