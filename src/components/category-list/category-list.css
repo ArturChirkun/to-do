@@ -1,0 +1,7 @@
+.category-list {
+    display: flex;
+    margin-bottom: 10px;
+    width: 90%;
+    justify-content: space-around;
+    margin-bottom: 15px;
+}
