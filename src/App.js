@@ -5,33 +5,32 @@ import { v4 as uuidv } from "uuid";
 
 import Header from "./components/header/header";
 import ViewTasks from "./components/view-tasks/view-tasks";
-import AddTask from "./components/add-task/add-task";
 import CustomButton from "./components/custom-buttom/custom-button";
 import ThemeButton from "./components/theme-button/theme-button";
+import { AddTaskModal } from "./components/add-task-modal/add-task-modal";
 import {
   getTasksFromLocalStorage,
   setTasksInLocalStorage,
-} from "./components/services/local-storage";
-import { ThemeContext } from "./components/context/context";
+} from "./services/local-storage";
+import { ThemeContext } from "./context/context";
 
 const App = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
 
-  const [tasks, setTasks] = useState(getTasksFromLocalStorage()); // tasks and complete tasks its not same --fix
+  const [tasks, setTasks] = useState(getTasksFromLocalStorage());
+
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
 
   useEffect(() => {
     setTasksInLocalStorage(tasks);
   }, [tasks]);
-  //setTasksinLocalStorage(tasks);
-
-  const [visibility, setVisibility] = useState(false); //typo -fix
-
-  const handleVisibilityClick = (prev) => {
-    return () => {
-      setVisibility(!prev);
-    };
-    //  better use prev --fix
-  };
 
   const handleThemeSwitch = () => {
     return () => {
@@ -44,13 +43,16 @@ const App = () => {
       alert("Please, enter a task");
       return;
     }
+    if (category === "") {
+      alert("Please, choose category");
+      return;
+    }
     const checkOnMatching = tasks.find(
       (task) =>
         task?.name?.toLowerCase() === name.toLowerCase() &&
         task.category === category
-    ); // better to use find--fix
+    );
 
-    // use return instead else
     return !checkOnMatching
       ? setTasks([
           ...tasks,
@@ -75,25 +77,27 @@ const App = () => {
     const copyCompletedTask = { ...completedTask, completed: true };
     const newArrOfTasks = tasks.filter((task) => task.id !== id);
     newArrOfTasks.push(copyCompletedTask);
-    setTasks(newArrOfTasks); // ????? --fix
+    setTasks(newArrOfTasks);
   };
   return (
     <div className="body" data-theme={theme}>
       <div className="App">
         <Header tasks={tasks} />
+
         <ViewTasks
           tasks={tasks}
           deleteTask={deleteTask}
           addToCompleted={addToCompleted}
           completed={false}
         />
-
-        <CustomButton type="button" onClick={handleVisibilityClick(visibility)}>
-          {" "}
-          {visibility ? "Close" : "Add new task"}{" "}
+        <AddTaskModal
+          modalIsOpen={modalIsOpen}
+          closeModal={closeModal}
+          addNewTask={addNewTask}
+        />
+        <CustomButton type="button" onClick={openModal}>
+          Add new task
         </CustomButton>
-
-        {visibility ? <AddTask addNewTask={addNewTask} /> : null}
 
         <ViewTasks tasks={tasks} deleteTask={deleteTask} completed={true} />
 
